@@ -61,7 +61,7 @@ module.exports = {
     extensions: ['.web.js', '.js'],
   },
   devServer: {
-    port: 8082,
+    port: 8084,
     contentBase: [path.join(__dirname, 'web'), path.join(__dirname, 'dist')],
     historyApiFallback: true,
   },

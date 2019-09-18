@@ -42,6 +42,7 @@ export class DraggableBox extends Component {
     return (
       <PanGestureHandler
         {...this.props}
+        minDist={2}
         onGestureEvent={this._onGestureEvent}
         onHandlerStateChange={this._onHandlerStateChange}>
         <Animated.View
