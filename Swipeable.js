@@ -88,7 +88,7 @@ export default class Swipeable extends Component<PropType, StateType> {
     );
   }
 
-  componentWillUpdate(props: PropType, state: StateType) {
+  UNSAFE_componentWillUpdate(props: PropType, state: StateType) {
     if (
       this.props.friction !== props.friction ||
       this.props.overshootLeft !== props.overshootLeft ||
@@ -322,7 +322,9 @@ export default class Swipeable extends Component<PropType, StateType> {
         minDeltaX={10}
         onGestureEvent={this._onGestureEvent}
         onHandlerStateChange={this._onHandlerStateChange}>
-        <Animated.View onLayout={this._onRowLayout} style={[styles.container, this.props.containerStyle]}>
+        <Animated.View
+          onLayout={this._onRowLayout}
+          style={[styles.container, this.props.containerStyle]}>
           {left}
           {right}
           <TapGestureHandler
@@ -334,7 +336,7 @@ export default class Swipeable extends Component<PropType, StateType> {
                 {
                   transform: [{ translateX: this._transX }],
                 },
-                this.props.childrenContainerStyle
+                this.props.childrenContainerStyle,
               ]}>
               {children}
             </Animated.View>
