@@ -36,7 +36,6 @@ UIManager.genericDirectEventTypes = {
 const {
   setJSResponder: oldSetJSResponder = () => {},
   clearJSResponder: oldClearJSResponder = () => {},
-  getConstants: oldGetConstants = () => ({}),
 } = UIManager;
 UIManager.setJSResponder = (tag, blockNativeResponder) => {
   RNGestureHandlerModule.handleSetJSResponder(tag, blockNativeResponder);
@@ -49,7 +48,7 @@ UIManager.clearJSResponder = () => {
 // We also add GH specific events to the constants object returned by
 // UIManager.getConstants to make it work with the newest version of RN
 UIManager.getConstants = () => {
-  const constants = oldGetConstants();
+  const constants = UIManager.getViewManagerConfig('getConstants');
   return {
     ...constants,
     genericDirectEventTypes: {
